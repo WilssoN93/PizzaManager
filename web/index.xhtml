@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Pizza Manager</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+
+
+
+                <h:outputLabel value="Pizza name"/>
+                <h:inputText value="#{pizza.name}"/>
+
+                <h:outputLabel value="Pizza description"/>
+                <h:inputText value="#{pizza.description}"/>
+
+                <h:outputLabel value="Pizza price"/>
+                <h:inputText value="#{pizza.price}"/>
+
+                <h:message for="number" style="color:blue"/>
+                <h:commandButton value="Submit" action="#{pizza.submit}"/>
+
+
+            </h:panelGrid>
+
+            <p:dataTable value="#{pizza.allPizzas}" var="p">
+
+                <p:column headerText="ID">#{p.id}</p:column>
+                <p:column headerText="Name">#{p.name}</p:column>
+                <p:column headerText="Description">#{p.description}</p:column>
+                <p:column headerText="Price">#{p.price}</p:column>
+
+                <p:column headerText="Action">
+                    <h:commandLink value="Delete" action="#{pizza.removeByPizza(p)}"/>
+                </p:column>
+            </p:dataTable>
+
+            Delete By Id:
+
+            <h:inputText value="#{pizza.id}"/>
+            <h:commandButton value="Delete" action="#{pizza.removeById}"/>
+
+        </h:form>
+
+        <br />
+    </h:body>
+</html>
+
