@@ -2,6 +2,7 @@
 
 package service;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -27,9 +28,9 @@ public class RestService {
     
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-    public void getAll(){
+    public List<Pizza> getAll(){
     
-    pm.getAllPizzas();
+    return pm.getAllPizzas();
         
     }
     
